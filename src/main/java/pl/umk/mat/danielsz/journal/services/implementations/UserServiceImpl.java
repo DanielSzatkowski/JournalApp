@@ -3,6 +3,7 @@ package pl.umk.mat.danielsz.journal.services.implementations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.umk.mat.danielsz.journal.exceptions.NotFoundException;
 import pl.umk.mat.danielsz.journal.model.User;
 import pl.umk.mat.danielsz.journal.repositories.UserRepository;
 import pl.umk.mat.danielsz.journal.services.UserService;
@@ -23,5 +24,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public User findOne(String id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Specified User does not exist!"));
     }
 }

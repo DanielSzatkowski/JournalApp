@@ -28,5 +28,10 @@ public class UserController {
         return userService.findAll();
     }
 
+    @GetMapping
+    @ResponseStatus(value = HttpStatus.OK)
+    public User findOne(String id){
+        return userService.findOne(id);
+    }
 
 }
