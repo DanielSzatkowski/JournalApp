@@ -3,6 +3,8 @@ package pl.umk.mat.danielsz.journal.services.implementations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.umk.mat.danielsz.journal.exceptions.NotFoundException;
+import pl.umk.mat.danielsz.journal.exceptions.OperationNotAllowedException;
 import pl.umk.mat.danielsz.journal.model.Entry;
 import pl.umk.mat.danielsz.journal.repositories.EntryRepository;
 import pl.umk.mat.danielsz.journal.services.EntryService;
@@ -26,6 +28,14 @@ public class EntryServiceImpl implements EntryService {
 
     @Override
     public void deleteAll(List<Entry> entries) {
-        entryRepository.deleteAll(entries);
+        if(entries != null){
+            entryRepository.deleteAll(entries);
+        }
+    }
+
+    @Override
+    public Entry findById(String id) {
+        return entryRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Repository not found!"));
     }
 }

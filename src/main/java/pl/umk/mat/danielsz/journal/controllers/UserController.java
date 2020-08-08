@@ -50,10 +50,4 @@ public class UserController {
     public User patch(@PathVariable String id, @RequestBody @NotNull @Valid User user){
         return userService.patch(user);
     }
-
-    //dodawanie entries do usera
-
-    //usuwanie entry usera
-
-    //patchowanie entry usera
 }
