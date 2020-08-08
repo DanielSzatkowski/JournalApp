@@ -1,6 +1,8 @@
 package pl.umk.mat.danielsz.journal.services.implementations;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.umk.mat.danielsz.journal.exceptions.NotFoundException;
@@ -67,5 +69,18 @@ public class EntryServiceImpl implements EntryService {
         userService.saveOne(user);
 
         return addedEntry;
+    }
+
+    @Override
+    public ResponseEntity<Void> deleteOne(String id) {
+        Entry entry = findById(id);
+
+        User user = userService.findOneByEntriesIn(id);
+        user.deleteEntry(entry);
+        userService.saveOne(user);
+
+        entryRepository.deleteById(id);
+
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
 }

@@ -17,4 +17,6 @@ public interface UserService {
     User patch(User user);
 
     User saveOne(User user);
+
+    User findOneByEntriesIn(String id);
 }

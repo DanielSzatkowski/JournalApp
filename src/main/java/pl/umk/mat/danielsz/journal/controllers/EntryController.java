@@ -2,8 +2,10 @@ package pl.umk.mat.danielsz.journal.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.umk.mat.danielsz.journal.model.Entry;
+import pl.umk.mat.danielsz.journal.model.User;
 import pl.umk.mat.danielsz.journal.services.EntryService;
 
 import javax.validation.constraints.NotBlank;
@@ -38,7 +40,12 @@ public class EntryController {
         return entryService.save(entry, userId);
     }
 
-    //TODO delete entry of the user
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteOne(@PathVariable @NotBlank String id){
+        entryService.deleteOne(id);
+
+        return new  ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+    }
 
     //TODO patch entry
 }

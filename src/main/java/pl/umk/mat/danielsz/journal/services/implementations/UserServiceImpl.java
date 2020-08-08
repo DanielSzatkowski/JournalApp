@@ -43,6 +43,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findOneByEntriesIn(String id) {
+        return userRepository.findOneByEntriesIn()
+                .orElseThrow(() -> new OperationNotAllowedException("Cannot find that entry!"));
+    }
+
+    @Override
     public List<User> findAll() {
         return userRepository.findAll();
     }

@@ -37,4 +37,7 @@ public class User extends AbstractDocument {
         this.entries = entries;
     }
 
+    public void deleteEntry(Entry entry) {
+        entries.remove(entry);
+    }
 }
