@@ -48,7 +48,6 @@ public class EntryController {
         return new  ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
 
-    //TODO patch entry
     @PatchMapping
     @ResponseStatus(value = HttpStatus.OK)
     public Entry patchOne(@RequestBody @NotNull @Valid Entry entry){
