@@ -72,10 +72,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseEntity<Void> deleteOne(String id) {
-        if(id == null){
-            throw new OperationNotAllowedException("Users id cannot be null!");
-        }
-
         if(!existsById(id)){
             throw new OperationNotAllowedException("User doesn't exists!");
         }
