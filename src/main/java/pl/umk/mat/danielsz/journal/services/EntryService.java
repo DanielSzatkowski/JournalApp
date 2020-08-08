@@ -17,4 +17,6 @@ public interface EntryService {
     Entry save(Entry entry, String userId);
 
     ResponseEntity<Void> deleteOne(String id);
+
+    Entry patchOne(Entry entry);
 }

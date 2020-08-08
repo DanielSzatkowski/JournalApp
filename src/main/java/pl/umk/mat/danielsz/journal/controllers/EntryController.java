@@ -8,6 +8,7 @@ import pl.umk.mat.danielsz.journal.model.Entry;
 import pl.umk.mat.danielsz.journal.model.User;
 import pl.umk.mat.danielsz.journal.services.EntryService;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -48,4 +49,9 @@ public class EntryController {
     }
 
     //TODO patch entry
+    @PatchMapping
+    @ResponseStatus(value = HttpStatus.OK)
+    public Entry patchOne(@RequestBody @NotNull @Valid Entry entry){
+        return entryService.patchOne(entry);
+    }
 }

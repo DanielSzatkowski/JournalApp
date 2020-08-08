@@ -83,4 +83,9 @@ public class EntryServiceImpl implements EntryService {
 
         return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
+
+    @Override
+    public Entry patchOne(Entry entry) {
+        return entryRepository.save(entry);
+    }
 }

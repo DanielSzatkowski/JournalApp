@@ -100,7 +100,7 @@ public class UserServiceImpl implements UserService {
         }
 
         if(!existsById(user.getId())){
-            throw new OperationNotAllowedException("User already exists!");
+            throw new OperationNotAllowedException("User doesn't exist!");
         }
 
         User oldUser = findOne(user.getId());
