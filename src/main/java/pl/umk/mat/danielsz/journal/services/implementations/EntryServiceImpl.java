@@ -23,4 +23,9 @@ public class EntryServiceImpl implements EntryService {
     public List<Entry> saveAll(List<Entry> entries) {
         return entryRepository.saveAll(entries);
     }
+
+    @Override
+    public void deleteAll(List<Entry> entries) {
+        entryRepository.deleteAll(entries);
+    }
 }

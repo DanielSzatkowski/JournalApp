@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface EntryService {
     List<Entry> saveAll(List<Entry> entries);
+
+    void deleteAll(List<Entry> entries);
 }

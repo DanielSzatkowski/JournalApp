@@ -40,13 +40,11 @@ public class UserController {
         return userService.create(user);
     }
 
-    //usuwanie usera
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") String id){
         return userService.deleteOne(id);
     }
 
-    //patchowanie usera
     @PatchMapping("/{id}")
     @ResponseStatus(value = HttpStatus.OK)
     public User patch(@PathVariable String id, @RequestBody @NotNull @Valid User user){
@@ -54,6 +52,7 @@ public class UserController {
     }
 
     //dodawanie entries do usera
+
 
     //usuwanie entry usera
 
