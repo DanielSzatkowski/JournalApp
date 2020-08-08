@@ -53,7 +53,6 @@ public class UserController {
 
     //dodawanie entries do usera
 
-
     //usuwanie entry usera
 
     //patchowanie entry usera
