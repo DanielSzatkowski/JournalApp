@@ -10,4 +10,8 @@ public interface EntryService {
     void deleteAll(List<Entry> entries);
 
     Entry findById(String id);
+
+    List<Entry> findAllUsersEntries(String userId);
+
+    Entry save(Entry entry, String userId);
 }

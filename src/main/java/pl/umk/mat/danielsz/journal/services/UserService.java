@@ -15,4 +15,6 @@ public interface UserService {
     ResponseEntity<Void> deleteOne(String id);
 
     User patch(User user);
+
+    User saveOne(User user);
 }
