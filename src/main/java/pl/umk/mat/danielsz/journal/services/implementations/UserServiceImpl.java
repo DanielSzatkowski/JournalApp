@@ -1,5 +1,6 @@
 package pl.umk.mat.danielsz.journal.services.implementations;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -25,12 +26,14 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final EntryService entryService;
     private final ModelMapper modelMapper;
+    private final BCrypt.Hasher hasher;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, EntryService entryService, ModelMapper modelMapper) {
+    public UserServiceImpl(UserRepository userRepository, EntryService entryService, ModelMapper modelMapper, BCrypt.Hasher hasher) {
         this.userRepository = userRepository;
         this.entryService = entryService;
         this.modelMapper = modelMapper;
+        this.hasher = hasher;
     }
 
     private User mapUserDto(User oldUser, User newUser) {
@@ -76,6 +79,9 @@ public class UserServiceImpl implements UserService {
 
             user.setEntries(allEntries);
         }
+
+        String hashedPass =  hasher.hashToString(BCrypt.MIN_COST, user.getPassword().toCharArray());
+        user.setPassword(hashedPass);
 
         return userRepository.save(user);
     }

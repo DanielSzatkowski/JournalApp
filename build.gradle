@@ -30,6 +30,7 @@ dependencies {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 	compile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.8'
+	compile group: 'at.favre.lib', name: 'bcrypt', version: '0.2.0'
 }
 
 test {
