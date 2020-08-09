@@ -15,6 +15,7 @@ import pl.umk.mat.danielsz.journal.services.EntryService;
 import pl.umk.mat.danielsz.journal.services.UserService;
 
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -64,6 +65,11 @@ public class EntryServiceImpl implements EntryService {
 
         User user = userService.findOne(userId);
         List<Entry> userEntries = user.getEntries();
+
+        if(userEntries == null){
+            userEntries = new ArrayList<>();
+        }
+
         userEntries.add(entry);
         user.setEntries(userEntries);
 
