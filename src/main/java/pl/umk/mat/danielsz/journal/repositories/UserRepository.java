@@ -6,5 +6,5 @@ import pl.umk.mat.danielsz.journal.model.User;
 import java.util.Optional;
 
 public interface UserRepository extends MongoRepository<User, String> {
-    Optional<User> findOneByEntriesIn();
+    Optional<User> findOneByEntriesIn(String id);
 }
