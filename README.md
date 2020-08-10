@@ -1,8 +1,8 @@
 # JournalApp
-Journal app created using MongoDB and spring.
+Journal app created using MongoDB and spring platform.
 
 ## Running MongoDB database (replica) 
-You can make MongoDB replica using following command:
+The following command starts a standalone instance as a member of a new replica set named rs0:
 ```
 mongod --port 27017 --dbpath /srv/mongodb/db0 --replSet rs0 --bind_ip localhost,<hostname(s)|ip address(es)>
 ```
